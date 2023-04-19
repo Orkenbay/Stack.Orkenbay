@@ -1,0 +1,94 @@
+#include<iostream>
+#include<queue>
+using namespace std;
+class Queue {
+	private :
+		string qu [ 100000 ] ; 
+		int n = 0 ;
+	public :
+		void Push(string x ) {
+			qu [ n ++ ] = x ; 
+		}
+		void Pop(){
+			for ( int i = 0 ; i < n ; i ++ ) {
+				qu [ i ] = qu [ i + 1 ] ;
+			}
+			n -- ;
+		}
+		string Front ( ) {
+			return qu [ 0 ] ;
+		}
+		string Back ( ) {
+			if ( n == 0 ) {
+				return "";
+			}
+			else {
+				return qu [ n - 1 ] ;
+			}
+		}
+		int Size ( ) {
+			return n ;
+		}
+		void Clear ( ) {
+			for ( int i = 0 ; i < n ; i ++ ) {
+				qu [ i ] = "" ;
+			}
+			n = 0 ;
+		}
+		bool Empty ( ) {
+			if ( n == 0 ) {
+				 return true ;
+			}
+			else {
+				return false;
+			}
+		}
+};
+int main ( ) {
+	Queue MyQueue ;
+	while ( true ) {
+		cout << "Commands:\n";
+		cout << "1)Push\n";
+		cout << "2)Pop\n";
+		cout << "3)Front\n";
+		cout << "4)Back\n" ;
+		cout << "5)Size\n" ;
+		cout << "6)Clear\n" ;
+		cout << "7)Empty\n" ; 
+		cout << "0)Close\n" ;
+		int command ;
+		cin >> command ;
+		if ( command == 1 ) {
+			string s ;
+			cin >> s ;
+			MyQueue.Push(s);
+		}
+		else if ( command == 2 ) {
+			MyQueue.Pop();
+		}
+		else if ( command == 3 ) {
+			cout << MyQueue.Front()<<endl;
+		}
+		else if ( command == 4 ) {
+			cout << MyQueue.Back()<<endl;
+		}
+		else if ( command == 5 ) {
+			cout<<MyQueue.Size()<<endl;
+		}
+		else if ( command == 6 ) {
+			MyQueue.Clear();
+			cout <<"Queue is cleared\n";
+		}
+		else if ( command == 7 ) {
+			cout << MyQueue.Empty() << "\n";
+		}
+		else if ( command == 0 ) {	
+			break ;
+		}
+		else {
+			cout <<"Error\nTry again\n";
+		}
+		
+	}
+	return 0 ;
+}
