@@ -1,32 +1,93 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+#include<iostream>
+#include<stack>
+using namespace std;
+class Stack {
+	private :
+		string st [ 100000 ] ; 
+		int n = 0 ;
+	public :
+		void Push(string x ) {
+			st [ n ++ ] = x ; 
+		}
+		void Pop(){
+			st [ n ] = "" ;
+			n -- ;
+			if ( n < 0 ) {
+				n = 0 ;
+			}
+		}
+		string Back ( ) {
+			if ( n == 0 ) {
+				return "";
+			}
+			else {
+				return st [ n - 1 ] ;
+			}
+		}
+		int Size ( ) {
+			return n ;
+		}
+		void Clear ( ) {
+			for ( int i = 0 ; i < n ; i ++ ) {
+				st [ i ] = "" ;
+			}
+			n = 0 ;
+		}
+		bool Empty ( ) {
+			if ( n == 0 ) {
+				 return true ;
+			}
+			else {
+				return false;
+			}
+		}
+};
+int main ( ) {
+	Stack MyStack ;
+	while ( true ) {
+		cout << "Commands:\n";
+		cout << "1)Push\n";
+		cout << "2)Pop\n";
+		cout << "3)Back\n";
+		cout << "4)Size\n";
+		cout << "5)Clear\n";
+		cout << "6)Empty\n";
+		cout << "0)Close\n";
+		int command ;
+		cin >> command ;
+		if ( command == 1 ) {
+			string s ;
+			cin >> s ;
+			MyStack.Push(s);
+		}
+		else if ( command == 2 ) {
+			MyStack.Pop();
+		}
+		else if ( command == 3 ) {
+			cout << MyStack.Back()<<endl;
+		}
+		else if ( command == 4 ) {
+			cout<<MyStack.Size()<<endl;
+		}
+		else if ( command == 5 ) {
+			MyStack.Clear();
+			cout <<"Stack is cleared\n";
+		}
+		else if ( command == 6 ) {
+		    if ( MyStack.Empty()==true){
+		        cout<<"Stackta eshtene zhok";
+		    }
+		    else {
+		        cout<<"Stackta birnarse bar";
+		    }
+		}
+		else if ( command == 0 ) {	
+			break ;
+		}
+		else {
+			cout <<"Error\nTry again\n";
+		}
+		
+	}
+	return 0 ;
+}
