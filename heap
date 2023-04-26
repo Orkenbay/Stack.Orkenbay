@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+class ExampleOrken
+{
+    public:
+        int * SetStack ()
+        {
+            int StackO = 10;
+            cout << "In SetStack: " << StackO << " | " << &StackO << endl;
+            return &StackO;
+        }
+        
+        
+        int* SetHeap ()
+        {
+            int *HeapO = new int (20);
+            cout<< "In SetHeap: " << *HeapO <<" | " <<HeapO << endl;
+            return HeapO;
+        }
+};
+int main()
+{
+    ExampleOrken exp;
+    int *StackVar = NULL, *HeapVar = NULL;
+    StackVar = exp.SetStack();
+    HeapVar = exp.SetHeap();
+    
+    cout<< *StackVar << " | " << StackVar << endl;
+    cout<< *HeapVar << " | " <<HeapVar<<endl;
+}
